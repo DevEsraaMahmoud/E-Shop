@@ -63,6 +63,10 @@ Route::get('/admin/contact/{contact}', [App\Http\Controllers\ContactController::
 
 Route::get('/admin/messages', [App\Http\Controllers\ContactController::class, 'AdminMessages'])->name('admin.messages');
 Route::get('/admin/messages/{message}', [App\Http\Controllers\ContactController::class, 'deleteMessage'])->name('destroy.message');
+Route::put('/admin/messages/{message}/reply', [App\Http\Controllers\ContactController::class, 'messReply'])->name('reply.message');
+Route::put('/admin/messages/{message}/unread', [App\Http\Controllers\ContactController::class, 'messUnread'])->name('unread.message');
+
+/*Route::post('/admin/messages/update/{id}', [App\Http\Controllers\ContactController::class, 'messReply'])->name('reply.message');*/
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 /*    $users= User::all();*/

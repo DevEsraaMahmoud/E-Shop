@@ -48,8 +48,9 @@
 
         <div class="row mt-5 justify-content-center" data-aos="fade-up">
             <div class="col-lg-10">
-                <form action="{{route('contact.form')}}" method="post" role="form" class="php-email-form">
+                <form action="{{route('contact.form')}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                    @csrf
+                    <input type="hidden" name="status" value="unread">
 
                     <div class="form-row">
                         <div class="col-md-6 form-group">
@@ -70,9 +71,7 @@
                         <div class="validate"></div>
                     </div>
                     <div class="mb-3">
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
+
                     </div>
                     <button class="btn btn-primary" type="submit">Send Message</button>
                 </form>

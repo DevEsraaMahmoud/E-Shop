@@ -30,7 +30,7 @@ class ContactController extends Controller
             'phone'=> request('phone'),
             'created_at'=> Carbon::now()
         ]);
-        return redirect()->route('contact')->with('success', 'Contact Inserted Successfully!');
+        return redirect()->route('admin.contact')->with('success', 'Contact Inserted Successfully!');
     }
     public function contact(){
         $contacts = Contact::all();
@@ -49,6 +49,7 @@ class ContactController extends Controller
             'subject'=> request('subject'),
             'email'=> request('email'),
             'message'=> request('message'),
+            'status'=> request('status'),
             'created_at'=> Carbon::now()
         ]);
         return redirect()->route('contact')->with('success', 'Your Message sent Successfully!');
@@ -68,6 +69,28 @@ class ContactController extends Controller
        public function deleteContact(Contact $contact){
         $contact->delete();
         return redirect()->route('admin.contact')->with('success', 'Contact Deleted Successfully! ');
+
+    }
+
+   /* public function messReply($id){
+            ContactForm::find($id)->update([
+                'status'=>'jhjjhjhj'
+            ]);
+        return redirect()->route('admin.messages')->with('success', 'Contact Deleted Successfully! ');
+
+    }*/
+    public function messReply(ContactForm $message, Request $request){
+
+        $message->status = $request->get('status');
+        $message->update();
+        return back();
+
+    }
+    public function messUnread(ContactForm $message, Request $request){
+
+        $message->status = $request->get('status');
+        $message->update();
+        return back();
 
     }
 

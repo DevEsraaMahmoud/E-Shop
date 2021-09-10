@@ -25,8 +25,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
+Route::post('/contact/form', [App\Http\Controllers\ContactController::class, 'ContactForm'])->name('contact.form');
 Route::get('/products', [App\Http\Controllers\ProductController::class, 'products'])->name('products');
+Route::get('/checkout', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
+Route::get('/{product}', [App\Http\Controllers\CartController::class, 'addProduct'])->name('addProduct');
 
 Route::get('/admin/products', [App\Http\Controllers\ProductController::class, 'index'])->name('all.products');
 Route::get('/admin/products/add', [App\Http\Controllers\ProductController::class, 'create'])->name('add.products');
@@ -40,11 +43,11 @@ Route::post('/slider/add', [App\Http\Controllers\HomeController::class, 'addSlid
 Route::get('/admin/slider/{slider}/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit.slider');
 Route::post('/admin/slider/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update.slider');
 Route::get('/admin/slider/{slider}', [App\Http\Controllers\HomeController::class, 'delete'])->name('destroy.slider');
+
 Route::get('/category/all', [App\Http\Controllers\CategoryController::class, 'AllCat'])->name('all.category');
 Route::post('/category/add', [App\Http\Controllers\CategoryController::class, 'AddCat'])->name('store.category');
 Route::get('/admin/category/{category}/edit', [App\Http\Controllers\CategoryController::class, 'EditCat'])->name('edit.category');
 Route::post('/admin/category/update/{id}', [App\Http\Controllers\CategoryController::class, 'UpdateCat'])->name('update.category');
-
 Route::get('/admin/category/{category}', [App\Http\Controllers\CategoryController::class, 'Delete'])->name('destroy.category');
 
 Route::get('/brand/all', [App\Http\Controllers\BrandController::class, 'index'])->name('all.brand');
@@ -52,6 +55,14 @@ Route::post('/brand/add', [App\Http\Controllers\BrandController::class, 'store']
 Route::get('/admin/brand/{brand}/edit', [App\Http\Controllers\BrandController::class, 'edit'])->name('edit.brand');
 Route::post('/admin/brand/update/{id}', [App\Http\Controllers\BrandController::class, 'update'])->name('update.brand');
 Route::get('/admin/brand/{brand}', [App\Http\Controllers\BrandController::class, 'delete'])->name('destroy.brand');
+
+Route::get('/admin/contact', [App\Http\Controllers\ContactController::class, 'AdminContact'])->name('admin.contact');
+Route::get('/admin/contact/add', [App\Http\Controllers\ContactController::class, 'AddContact'])->name('add.contact');
+Route::post('/admin/contact/store', [App\Http\Controllers\ContactController::class, 'store'])->name('store.contact');
+Route::get('/admin/contact/{contact}', [App\Http\Controllers\ContactController::class, 'deleteContact'])->name('destroy.contact');
+
+Route::get('/admin/messages', [App\Http\Controllers\ContactController::class, 'AdminMessages'])->name('admin.messages');
+Route::get('/admin/messages/{message}', [App\Http\Controllers\ContactController::class, 'deleteMessage'])->name('destroy.message');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 /*    $users= User::all();*/

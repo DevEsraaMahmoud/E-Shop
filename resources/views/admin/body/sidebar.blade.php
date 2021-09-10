@@ -109,8 +109,6 @@
 
 
 
-
-
                 <li  class="has-sub" >
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#charts"
                        aria-expanded="false" aria-controls="charts">
@@ -132,6 +130,42 @@
                         </div>
                     </ul>
                 </li>
+
+                <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#contact"
+                       aria-expanded="false" aria-controls="contact">
+                        <i class="mdi mdi-chart-pie"></i>
+                        <span class="nav-text">Contact</span> <b class="caret"></b>
+                    </a>
+                    <ul  class="collapse"  id="contact"
+                         data-parent="#sidebar-menu">
+                        <div class="sub-menu">
+
+
+                            <li >
+                                <a class="sidenav-item-link" href="{{route('admin.contact')}}">
+                                    <span class="nav-text">Contact Page</span>
+
+                                </a>
+                            </li>
+
+                            <li >
+                                <a class="sidenav-item-link" href="{{route('add.contact')}}">
+                                    <span class="nav-text">Add Contact Data</span>
+
+                                </a>
+                            </li>
+                            <li >
+                                <a class="sidenav-item-link" href="{{route('admin.messages')}}">
+                                    <span class="nav-text">Contact Message</span>
+
+                                </a>
+                            </li>
+
+                        </div>
+                    </ul>
+                </li>
+
 
 
 

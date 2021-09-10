@@ -14,33 +14,43 @@
 
                 <div class="info-wrap">
                     <div class="row">
+                        @foreach($contacts as $contact)
                         <div class="col-lg-4 info">
                             <i class="icofont-google-map"></i>
                             <h4>Location:</h4>
-                            <p>A108 Adam Street<br>New York, NY 535022</p>
+                            <p>{{$contact->address}}</p>
                         </div>
 
                         <div class="col-lg-4 info mt-4 mt-lg-0">
                             <i class="icofont-envelope"></i>
                             <h4>Email:</h4>
-                            <p>info@example.com<br>contact@example.com</p>
+                            <p>{{$contact->email}}</p>
                         </div>
 
                         <div class="col-lg-4 info mt-4 mt-lg-0">
                             <i class="icofont-phone"></i>
                             <h4>Call:</h4>
-                            <p>+1 5589 55488 51<br>+1 5589 22475 14</p>
+                            <p>{{$contact->phone}}</p>
                         </div>
+                          @endforeach
                     </div>
                 </div>
 
             </div>
 
         </div>
+        @if(session('success'))
+            <div class="alert alert-primary alert-dismissible" role="alert" id="liveAlert">
+                <strong>{{session('success')}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
         <div class="row mt-5 justify-content-center" data-aos="fade-up">
             <div class="col-lg-10">
-                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                <form action="{{route('contact.form')}}" method="post" role="form" class="php-email-form">
+                   @csrf
+
                     <div class="form-row">
                         <div class="col-md-6 form-group">
                             <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -64,7 +74,7 @@
                         <div class="error-message"></div>
                         <div class="sent-message">Your message has been sent. Thank you!</div>
                     </div>
-                    <div class="text-center"><button type="submit">Send Message</button></div>
+                    <button class="btn btn-primary" type="submit">Send Message</button>
                 </form>
             </div>
 

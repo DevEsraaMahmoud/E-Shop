@@ -113,11 +113,4 @@ class HomeController extends Controller
         return redirect()->route('login');
     }
 
-        public function contact(){
-            return view('pages.contact');
-        }
-
-
-
-
 }

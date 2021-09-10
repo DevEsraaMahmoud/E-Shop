@@ -23,7 +23,7 @@
                         </div>
                         <!-- add to cart btn -->
                         <div class="ecom bg-lblue">
-                            <a class="btn" href="#">Add to cart</a>
+                            <a class="btn" href="{{route('addProduct', $product->id)}}">Add to cart</a>
                         </div>
                     </div>
                 </div>
